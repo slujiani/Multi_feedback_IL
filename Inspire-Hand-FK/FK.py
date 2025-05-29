@@ -153,6 +153,47 @@ def plot_hand(hand_points_dict):
 
     plt.show()
 
+def inspire_hand_fk(nums):
+    fingers = [
+        FourFingerKinematics(
+            B=[32.15, 156.63, 0.56],  # E2
+            C=[32.15, 189.65, 3.71],  # F2
+            D=[32.15, 241.4, 12.34],  # G2
+            label=2
+        ),
+        FourFingerKinematics(
+            B=[10.45, 157, 0.56],     # E3
+            C=[10.45, 189.65, 3.41],  # F3
+            D=[10.45, 245.4, 13.36], # G3
+            label=3
+        ),
+        FourFingerKinematics(
+            B=[-11.08, 156.49, 0.56], # E4
+            C=[-11.08, 189.07, 3.71], # F4
+            D=[-11.08, 241.18, 12.34],# G4
+            label=4
+        ),
+        FourFingerKinematics(
+            B=[-32.53, 152.96, 0.56], # E5
+            C=[-32.53, 185.4, 3.72],  # F5
+            D=[-32.53, 227.53, 10.31],# G5
+            label=5
+        )
+    ]
+
+    # 拇指初始化
+    thumb = ThumbKinematics(
+        E=[26.9, 68.9, 21.01],       # E1
+        F=[29.87, 72.1, 30.56],      # F1
+        G=[38.59, 100.66, 58.59],    # G1
+        H=[42.06, 119.44, 69.75],    # H1
+        I=[44.06, 151.26, 76.16]     # I1
+    )
+
+    # 手的整体初始化
+    hand = HandKinematics(fingers, thumb)
+    return hand.getAllPositions(nums)
+
 if __name__ == '__main__':
     # from FK import FourFingerKinematics, ThumbKinematics, HandKinematics
 
